@@ -68,7 +68,7 @@
       </li> -->
     </ul>
     <div class="card-footer d-flex justify-content-between">
-      <span>還有 3 筆任務未完成</span>
+      <span>還有 {{todosActiveCount}} 筆任務未完成</span>
       <a href="#">清除所有任務</a>
     </div>
   </div>
@@ -159,6 +159,17 @@
             return newTodos;
           }
           return [];
+        },
+        todosActiveCount: function(){
+          var activeCount=0;
+          this.todos.forEach(
+              function (item){
+                if(!item.completed){
+                  activeCount++;
+                }
+              }
+            )
+          return activeCount;
         }
       },
   });
