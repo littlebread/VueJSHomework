@@ -69,7 +69,7 @@
     </ul>
     <div class="card-footer d-flex justify-content-between">
       <span>還有 {{todosActiveCount}} 筆任務未完成</span>
-      <a href="#">清除所有任務</a>
+      <a href="#" @click="removeAll()">清除所有任務</a>
     </div>
   </div>
 </div>
@@ -114,6 +114,12 @@
               return todo.id === item.id;
             });
           this.todos.splice(newIndex,1)
+        },
+        removeAll: function() {
+          if (!confirm("您確定要刪除全部的資料嗎？")){//刪除確認
+            return false;
+          }
+          this.todos =[];
         },
         editTodo: function(item){
           console.log(item);
